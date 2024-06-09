@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="x-icon" href="https://static.vecteezy.com/system/resources/thumbnails/004/916/118/small/gifts-shop-with-valentines-day-decoration-valentines-day-shop-window-with-gifts-bouquet-of-flowers-gift-boxes-hearts-illustration-in-flat-style-vector.jpg">
+    <title>Order Confirmation</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+        }
+        .container {
+            flex: 1;
+        }
+        .cart__item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        .cart__item--image img {
+            max-width: 100px; /* Adjust the width of the image */
+            height: auto;
+            margin-right: 1rem;
+        }
+        .cart__item--details {
+            flex: 1; /* Allow the details to take up the remaining space */
+        }
+
+        .navbar-brand {
+            font-family: 'Lobster', cursive;
+            font-size: 2rem;
+            color: #ff6f61;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .navbar-brand:hover {
+            transform: scale(1.1);
+        }
+
+        .navbar-brand:focus,
+        .navbar-brand:active {
+            color: #ff6f61;
+            text-decoration: none;
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+
+        .footer {
+            background-color: #343a40;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        .footer a {
+            color: #ff6f61;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        .footer .social-icons {
+            margin: 10px 0;
+        }
+
+        .footer .social-icons i {
+            font-size: 1.5rem;
+            margin: 0 10px;
+            transition: color 0.2s;
+        }
+
+        .footer .social-icons i:hover {
+            color: #ff6f61;
+        }
+    </style>
+</head>
+<body>
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Gift Store</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{{ url_for('main') }}">Home</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Categories
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="{{ url_for('mainbirthday') }}">Birthday Gifts</a></li>
+              <li><a class="dropdown-item" href="{{ url_for('mainflower') }}">Anniversary Gifts</a></li>
+              <li><a class="dropdown-item" href="{{ url_for('mainpersonal') }}">Persionalized Gifts</a></li>
+              <li><a class="dropdown-item" href="{{ url_for('maincake') }}">Cakes</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('main_about') }}">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('main_contact') }}">Contact Us</a>
+          </li>
+        </ul>
+
+        <div class="mx-2">
+          <form class="d-flex" role="search" method="POST" action="{{ url_for('mainsearch') }}">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="search_query">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+          </form>
+        </div>
+
+        <div class="mx-2">
+          <a href="{{ url_for('cart') }}">
+            <button type="button" class="btn btn-light">
+              <i class="fas fa-shopping-cart"></i>
+            </button>
+          </a>
+        </div>
+
+        <div class="mx-2 dropdown">
+          {% if session['user_id'] %}
+          <a class="btn btn-primary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            <i class="fas fa-user"></i> Account
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end">
+            <li><a class="dropdown-item" href="{{ url_for('mainprof')}}">Profile</a></li>
+            <li><a class="dropdown-item" href="{{ url_for('wallet')}}">My wallet</a></li>
+            <li><a class="dropdown-item" href="{{ url_for('order')}}">My Orders</a></li>
+            <li><a class="dropdown-item" href="{{ url_for('logout') }}">Logout</a></li>
+          </ul>
+          {% else %}
+          <a class="btn btn-primary" href="{{ url_for('cart') }}" role="button">
+            <i class="fas fa-user"> SignIn</i>
+          </a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </nav>
+
+<div class="container my-4">
+    {% if purchase_success %}
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>Items bought successfully!</strong> Thanks for buying, your order will be delivered soon.
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {% endif %}
+    <h1 class="mb-4">Your Order: </h1>
+    <div class="order">
+        {% for item in order_items %}
+        <div class="cart__item">
+            <div class="cart__item--image">
+                <img src="{{ item.image }}" alt="{{ item.name }}">
+            </div>
+            <div class="cart__item--details">
+                <div class="cart__item--name">{{ item.name }}</div>
+                <div class="cart__item--qty">Quantity: {{ item.quantity }}</div>
+                <div class="cart__item--price">₹{{ item.total_price }}</div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<footer class="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+
+
+          <p>Designed and Developed by Sachin Maurya</p>
+          <p>3rd Year, B.Tech, Computer Science and Bioscience</p>
+          <p>Indraprastha Institute of Information Technology Delhi</p>
+
+          <p>Contact me here:</p>
+          <div class="social-icons">
+            <a href="mailto:sachin22424@iiitd.ac.in"><i class="fas fa-envelope"></i></a>
+            <a href="https://github.com/Sachin22424" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/sachin-maurya-9028b4271/" target="_blank"><i
+                class="fab fa-linkedin-in"></i></a>
+            <a href="https://www.instagram.com/sa.chin_1708/" target="_blank"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+
+        <p>mail id: sachin22424@iiitd.ac.in</p>
+
+        <p>&copy; 2024 Gift Store. All Rights Reserved.</p>
+      </div>
+    </div>
+    </div>
+  </footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js"
+        integrity="sha384-oBqDVmMz4fnFO9gybBogGz1NU6c9I6Y5r1LwBxMYkz4pll5OxF2ABjYi6G7SkANJ"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+        integrity="sha384-pQdfFDt1aCCbDERR1DXP7DgyyqG9KNBr1P6VVwF3TLf0PBd1D8P0eg5Gz3J9lGAP"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+</body>
+</html>

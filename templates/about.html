@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>About Us - Gift Store</title>
+    <link rel="shortcut icon" type="x-icon" href="https://static.vecteezy.com/system/resources/thumbnails/004/916/118/small/gifts-shop-with-valentines-day-decoration-valentines-day-shop-window-with-gifts-bouquet-of-flowers-gift-boxes-hearts-illustration-in-flat-style-vector.jpg">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        .navbar-brand {
+            font-family: 'Lobster', cursive;
+            font-size: 2rem;
+            color: #ff6f61;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .navbar-brand:hover {
+            transform: scale(1.1);
+        }
+
+        .navbar-brand:focus,
+        .navbar-brand:active {
+            color: #ff6f61;
+            text-decoration: none;
+        }
+
+        .about-header {
+            background-color: #ff6f61;
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .about-header h1 {
+            font-family: 'Lobster', cursive;
+            font-size: 3rem;
+        }
+
+        .about-content {
+            padding: 40px 20px;
+        }
+
+        .about-content h2 {
+            font-family: 'Lobster', cursive;
+            font-size: 2.5rem;
+            color: #ff6f61;
+        }
+
+        .about-content p {
+            font-size: 1.1rem;
+            margin-top: 20px;
+        }
+
+        .footer {
+      background-color: #343a40;
+      color: white;
+      padding: 20px 0;
+      text-align: center;
+    }
+
+    .footer a {
+      color: #ff6f61;
+      text-decoration: none;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
+    }
+
+    .footer .social-icons {
+      margin: 10px 0;
+    }
+
+    .footer .social-icons i {
+      font-size: 1.5rem;
+      margin: 0 10px;
+      transition: color 0.2s;
+    }
+
+    .footer .social-icons i:hover {
+      color: #ff6f61;
+    }
+
+        @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+    </style>
+</head>
+
+<body>
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Gift Store</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{{ url_for('home') }}">Home</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Categories
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="{{ url_for('carouselbirthday') }}">Birthday Gifts</a></li>
+              <li><a class="dropdown-item" href="{{ url_for('carouselflower') }}">Anniversary Gifts</a></li>
+              <li><a class="dropdown-item" href="{{ url_for('persionalized') }}">Persionalized Gifts</a></li>
+              <li><a class="dropdown-item" href="{{ url_for('carouselcake') }}">Cakes</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('about') }}">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('contact') }}">Contact Us</a>
+          </li>
+        </ul>
+
+        <div class="mx-2">
+          <form class="d-flex" role="search" method="POST" action="{{ url_for('search') }}">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="search_query">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+          </form>
+        </div>
+
+        <div class="mx-2">
+          <a id="cart-button">
+            <button type="button" class="btn btn-light">
+              <i class="fas fa-shopping-cart"></i>
+            </button>
+          </a>
+        </div>
+
+        <div class="mx-2">
+          <a class="btn btn-primary" href="{{ url_for('login') }}" role="button">
+            <i class="fas fa-user"> SignIn</i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+    <!-- Modal Structure -->
+  <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="loginModalLabel">Login Required</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          Please log in to add items to your cart.
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <a href="{{ url_for('login') }}" class="btn btn-primary">Login</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // Attach event listener to each add-to-cart form
+      // document.querySelectorAll('.add-to-cart-form').forEach(function (form) {
+      //   form.addEventListener('submit', function (event) {
+      //     event.preventDefault();
+      //     var myModal = new bootstrap.Modal(document.getElementById('loginModal'));
+      //     myModal.show();
+      //   });
+      // });
+
+      // Attach event listener to the cart button in the navbar
+      document.getElementById('cart-button').addEventListener('click', function (event) {
+        event.preventDefault();
+        var myModal = new bootstrap.Modal(document.getElementById('loginModal'));
+        myModal.show();
+      });
+    });
+  </script>
+
+    <header class="about-header">
+        <div class="container">
+            <h1>About Us</h1>
+        </div>
+    </header>
+
+    <div class="container about-content">
+        <div class="row">
+            <div class="col-lg-12">
+                <h2>Welcome to Gift Store</h2>
+                <p>
+                    At Gift Store, we believe that every occasion deserves a special touch. Our mission is to provide
+                    you with
+                    the perfect gifts that not only express your sentiments but also leave a lasting impression. With a
+                    wide
+                    range of gift options for birthdays, anniversaries, weddings, graduations, and more, we are your
+                    one-stop
+                    destination for all things gifting.
+                </p>
+                <p>
+                    Founded in [Year], Gift Store has grown from a small shop to a beloved brand known for its quality
+                    and
+                    creativity. Our team of passionate individuals works tirelessly to bring you unique and thoughtful
+                    gifts
+                    that make every moment memorable.
+                </p>
+                <p>
+                    We are committed to customer satisfaction and strive to provide an exceptional shopping experience.
+                    Thank you
+                    for choosing Gift Store. We look forward to helping you celebrate life's special moments.
+                </p>
+                <h2>Our Vision</h2>
+                <p>
+                    To be the leading gift store that brings joy and happiness to every celebration.
+                </p>
+                <h2>Our Mission</h2>
+                <p>
+                    To offer a diverse range of high-quality gifts that cater to all occasions, backed by outstanding
+                    customer service and a seamless shopping experience. Also to create a better User Interface and User Experience for our customers.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+    
+    
+              <p>Designed and Developed by Sachin Maurya</p>
+              <p>3rd Year, B.Tech, Computer Science and Bioscience</p>
+              <p>Indraprastha Institute of Information Technology Delhi</p>
+    
+              <p>Contact me here:</p>
+              <div class="social-icons">
+                <a href="mailto:sachin22424@iiitd.ac.in"><i class="fas fa-envelope"></i></a>
+                <a href="https://github.com/Sachin22424" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/sachin-maurya-9028b4271/" target="_blank"><i
+                    class="fab fa-linkedin-in"></i></a>
+                <a href="https://www.instagram.com/sa.chin_1708/" target="_blank"><i class="fab fa-instagram"></i></a>
+              </div>
+            </div>
+    
+            <p>mail id: sachin22424@iiitd.ac.in</p>
+    
+            <p>&copy; 2024 Gift Store. All Rights Reserved.</p>
+          </div>
+        </div>
+        </div>
+      </footer>
+<!-- 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script> -->
+</body>
+
+</html>
