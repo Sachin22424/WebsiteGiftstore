@@ -1,6 +1,45 @@
 # WebsiteGifstore
 This project is a simple e-commerce website built using the HTML, Flask web framework, sqlalchemy and sql for database. It allows users to browse products, add them to their cart, manage their wallet balance, and checkout their orders. The site includes authentication features such as login and signup, and ensures a personalized shopping experience.
 
+How to Run:
+
+
+Clone the Repository
+
+    git clone https://github.com/your-username/your-repo.git
+    cd your-repo
+
+Create and Activate a Virtual Environment
+
+    python3 -m venv venv
+    source venv/bin/activate  # On Windows use `venv\Scripts\activate`
+
+
+Install the Requirements
+
+    pip install flask
+    pip install sqlalchemy
+
+    
+OR
+
+
+Install the Dependencies
+
+    pip install -r requirements.txt
+
+Set Up the Database
+
+It is hosted online; you can use the same database connection details in the Flask app configuration.
+
+Running the Application
+
+After installing the dependencies and setting up the database, run the application using:
+
+    flask run
+
+    
+
 -Commerce Web Application
 This project is a Flask-based web application that serves as an e-commerce platform. It allows users to sign up, log in, search for products, add items to a shopping cart, manage their cart, make purchases using a wallet system, and view order history.
 
@@ -27,33 +66,6 @@ Flask
 SQLAlchemy
 PyMySQL
 
-How to run:
-Clone the repository:
-
-git clone https://github.com/your-username/your-repo.git
-cd your-repo
-Create and activate a virtual environment:
-
-python3 -m venv venv
-source venv/bin/activate  # On Windows use `venv\Scripts\activate`
-
-Install the requirements:
-pip install flask
-pip install sqlalchemy
-
-OR
-
-Install the dependencies:
-
-pip install -r requirements.txt
-
-Set up the database:
-It is hosted online you can use same database connection details in the Flask app configuration.
-
-Running the Application
-After installing the dependencies and setting up the database, run the application using:
-
-flask run
 
 Directory Structure
 .
