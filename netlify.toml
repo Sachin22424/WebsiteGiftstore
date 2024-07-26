@@ -1,6 +1,14 @@
 [build]
+<<<<<<< HEAD
   command = "pip install -r requirements.txt && python app.py"
   publish = "."
+=======
+  command = "pip install -r requirements.txt"
+  publish = "public"
+>>>>>>> 08e1410ebe5a72fa5ca9524ae87a7cacb957b6eb
+
+[functions]
+  directory = "netlify/functions"
 
 [[redirects]]
   from = "/*"
