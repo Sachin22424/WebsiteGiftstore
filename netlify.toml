@@ -1,7 +1,7 @@
 [build]
   base = ""
   publish = "templates"
-  command = "pip install -r requirements.txt"
+  command = "pip install -r requirements.txt && python app.py"
 
 [build.environment]
   PYTHON_VERSION = "3.8"
