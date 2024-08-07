@@ -1,12 +1,9 @@
 [build]
-  base = ""
+  command = "pip install -r requirements.txt && netlify-lambda build functions"
+  functions = "netlify/functions"
   publish = "templates"
-  command = "pip install -r requirements.txt"
-
-[build.environment]
-  PYTHON_VERSION = "3.8"
 
 [[redirects]]
   from = "/*"
-  to = "/index.html"
+  to = "/app"
   status = 200
