@@ -1,113 +1,116 @@
-# WebsiteGifstore
-This project is a simple e-commerce website built using the HTML, Flask web framework, sqlalchemy and sql for database. It allows users to browse products, add them to their cart, manage their wallet balance, and checkout their orders. The site includes authentication features such as login and signup, and ensures a personalized shopping experience.
+# 🎁 WebsiteGifstore
 
-How to Run:
+WebsiteGifstore is a **Flask-based e-commerce platform** designed for a seamless and personalized shopping experience. Users can browse gift products, add items to their cart, manage their wallet balance, and complete purchases with ease. The application includes secure user authentication and a responsive frontend for an engaging user experience.
 
+---
 
-Clone the Repository
+## 🚀 Features
 
-    git clone https://github.com/your-username/your-repo.git
-    cd your-repo
+- **User Authentication** 🔒: Secure signup and login functionality.
+- **Product Search** 🔍: Search for products by name or description.
+- **Shopping Cart** 🛒: Add, update, or remove products from the cart.
+- **Wallet System** 💳: Add funds to a wallet and use them for purchases.
+- **Order Management** 📦: View past orders and purchase history.
+- **Contact & Feedback** 📬: Submit feedback via a contact form.
+- **Responsive Design** 📱: Mobile-friendly UI with Bootstrap.
 
-Create and Activate a Virtual Environment
+---
 
-    python3 -m venv venv
-    source venv/bin/activate  # On Windows use `venv\Scripts\activate`
+## 🧠 Technologies Used
 
+| **Layer**            | **Technology**           |
+|-----------------------|--------------------------|
+| **Backend**           | Flask                   |
+| **Database**          | MySQL + SQLAlchemy      |
+| **Frontend**          | HTML, CSS, Bootstrap    |
+| **Template Engine**   | Jinja2                  |
 
-Install the Requirements
+---
 
-    pip install flask
-    pip install sqlalchemy
+## 📁 Directory Structure
 
-    
-OR
+```
+WebsiteGifstore
+├── templates/                 # HTML templates for frontend
+│   ├── index.html            # Homepage
+│   ├── search_results.html   # Search results page
+│   ├── main_search.html      # Main search page
+│   ├── login.html            # Login page
+│   ├── signup.html           # Signup page
+│   ├── main.html             # User profile page
+│   ├── contact.html          # Contact form
+│   ├── about.html            # About page
+│   ├── main_about.html       # Main about page
+│   ├── main_contact.html     # Main contact page
+│   ├── carouselbirthday.html # Birthday gift carousel
+│   ├── carouselcake.html     # Cake gift carousel
+│   ├── carouselflower.html   # Flower gift carousel
+│   ├── persionalized.html    # Personalized gift page
+│   ├── main_birthday.html    # Main birthday gifts page
+│   ├── main_cake.html        # Main cake gifts page
+│   ├── main_flower.html      # Main flower gifts page
+│   ├── main_personal.html    # Main personalized gifts page
+│   ├── main_prof.html        # Main profile page
+│   ├── cart.html             # Shopping cart page
+│   ├── wallet.html           # Wallet management page
+│   ├── order.html            # Order history page
+├── static/                   # Static assets
+│   ├── css/                  # CSS styles
+│   ├── js/                   # JavaScript files
+├── app.py                    # Main Flask application
+├── requirements.txt          # Python dependencies
+└── README.md                 # Project documentation
+```
 
+---
 
-Install the Dependencies
+## ✅ Prerequisites
 
-    pip install -r requirements.txt
+Ensure the following are installed on your system:
+- 🐍 Python 3.8+
+- 🗄 MySQL Database
+- 📦 Flask
+- 🛠 SQLAlchemy
+- 🔗 PyMySQL
 
-Set Up the Database
+---
 
-It is hosted online; you can use the same database connection details in the Flask app configuration.
+## 📦 Installation & Running Locally
 
-Running the Application
+Follow these steps to set up and run the project on your machine:
 
-After installing the dependencies and setting up the database, run the application using:
+### 1. Clone the Repository
+```bash
+git clone https://github.com/Sachin22424/WebsiteGiftstore
+cd your-repo
+```
 
-    flask run
+### 2. Create and Activate a Virtual Environment
+```bash
+python3 -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+```
 
-    
+### 3. Install Dependencies
+Option 1: Install individually
+```bash
+pip install flask
+pip install sqlalchemy
+pip install pymysql
+```
 
--Commerce Web Application
-This project is a Flask-based web application that serves as an e-commerce platform. It allows users to sign up, log in, search for products, add items to a shopping cart, manage their cart, make purchases using a wallet system, and view order history.
+Option 2: Install from requirements.txt
+```bash
+pip install -r requirements.txt
+```
 
-Features
-User Authentication: Users can sign up and log in.
-Product Search: Users can search for products by name or description.
-Shopping Cart: Users can add, update, and remove products from their shopping cart.
-Wallet System: Users can add funds to their wallet and use it to purchase items.
-Order Management: Users can view their past orders.
-Contact and Feedback: Users can submit feedback through a contact form.
-Technologies Used
-Flask: For web framework.
-SQLAlchemy: For database interaction.
-MySQL: As the database.
-HTML/CSS: For front-end rendering.
-Bootstrap: For responsive design.
-Jinja2: For template rendering.
+### 4. Set Up the Database
+- The database is hosted online. Configure the connection details in `app.py` using the provided credentials.
 
-Prerequisites
+### 5. Run the Application
+```bash
+flask run
+```
+- Access the application at `http://localhost:5000`.
 
-Python 3.x
-MySQL Database
-Flask
-SQLAlchemy
-PyMySQL
-
-
-Directory Structure
-.
-├── templates
-│   ├── index.html
-│   ├── search_results.html
-│   ├── main_search.html
-│   ├── login.html
-│   ├── signup.html
-│   ├── main.html
-│   ├── contact.html
-│   ├── about.html
-│   ├── main_about.html
-│   ├── main_contact.html
-│   ├── carouselbirthday.html
-│   ├── carouselcake.html
-│   ├── carouselflower.html
-│   ├── persionalized.html
-│   ├── main_birthday.html
-│   ├── main_cake.html
-│   ├── main_flower.html
-│   ├── main_personal.html
-│   ├── main_prof.html
-│   ├── cart.html
-│   ├── wallet.html
-│   ├── order.html
-├── static
-│   ├── css
-│   ├── js
-├── app.py
-├── requirements.txt
-└── README.md
-
-Important Routes
-Home: /
-Search: /search, /mainsearch
-User Authentication: /login, /signup
-User Profile: /main
-Contact: /contact, /main_contact
-About: /about, /main_about
-Product Categories: /carouselbirthday, /carouselcake, /carouselflower, /persionalized, /mainbirthday, /maincake, /mainflower, /mainpersonal
-Cart Management: /cart, /cart/add, /cart/update, /remove_from_cart
-Wallet Management: /wallet
-Checkout: /checkout
-Order Management: /order
+---
