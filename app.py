@@ -8,7 +8,7 @@ app.secret_key = 'a_random_secure_secret_key'
 hostname = "bnmxmc1oa4gjmdzpizlf-mysql.services.clever-cloud.com"
 db_name = "bnmxmc1oa4gjmdzpizlf"
 username = "ut66dkwvd5yvmkwg"
-password = "uWfo0yELOLwLRF4vE603"
+password = "sLYeerOARsDFGidGlyJB"
 port = 3306
 
 # Create engine
@@ -418,6 +418,8 @@ def order():
     
     purchase_success = session.pop('purchase_success', None)  # Retrieve and remove the session variable
     return render_template('order.html', order_items=order_items, purchase_success=purchase_success)
+
+
 
 if __name__ == '__main__':
     app.run(debug=True)
