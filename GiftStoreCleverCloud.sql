@@ -40,7 +40,7 @@ INSERT INTO products (name, description, price, image_url)
 VALUES 
 ('Personalized Mothers Day Scented Candle', 'A lovely scented candle for Mothers Day', 699, '//www.bigsmall.in/cdn/shop/files/WhatsAppImage2024-04-22at13.38.17_large.jpg?v=1713773425'),
 ('Vintage Gramophone Bluetooth Speaker', 'A vintage styled Bluetooth speaker', 2499, '//www.bigsmall.in/cdn/shop/files/webp_large.webp?v=1698326541'),
-('3D Acrylic LED Message Board' , 'Illuminate your thoughts, ideas, and messages with the 3D Acrylic LED Message Board' , 850 , 'https://www.bigsmall.in/cdn/shop/files/10_0557432e-00ff-4d65-bfa4-02359696e21b_large.png?v=1709276767'),
+('3D Acrylic LED Message Board' , 'Illuminate your thoughts, ideas, and messages with the 3D Acrylic LED Message Board' , 850 , 'https://m.media-amazon.com/images/I/71Ye-YDA-pL._SL1500_.jpg'),
 ('Doraemon Bobblehead Speaker', 'A fun Doraemon bobblehead speaker', 399, 'https://cdn.shopify.com/s/files/1/1305/2183/products/11033_1_720x.jpg?v=1677223136'),
 ('Personalized Coffee Mug' , 'A coffe mug with persionalized name written on it' , 599 , 'https://cdn.shopify.com/s/files/1/1305/2183/products/10822_5_720x.jpg?v=1680176724'),
 ('G Lamp with Speaker, Clock and Wireless Charger' , 'A lovely smart G Lamp with Speaker with Clock and Wireless Charger' , 1999 , 'https://www.bigsmall.in/cdn/shop/files/Card1_e3b1926b-b586-49b3-abf2-fb37a2c02a09_large.jpg?v=1702539621'),
